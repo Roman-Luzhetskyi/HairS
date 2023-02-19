@@ -3,14 +3,17 @@ import throttle from "lodash.throttle";
 
 const iframe = document.querySelector("#vimeo-player");
 const player = new Player(iframe);
-console.log(player);
 
-const onPlayer = ({ seconds }) => {
-    localStorage.setItem('videoplayer-current-time', seconds)
-};
 
-if(localStorage.getItem('videoplayer-current-time')){
-    player.setCurrentTime(localStorage.getItem('videoplayer-current-time'));
+player.on('timeupdate',  throttle( e => {
+    localStorage.setItem('videoplayer-current-time', e.seconds);
+    }, 1000));
+
+// Отримати збережений час відтворення з локального сховища
+const currentTime = localStorage.getItem('videoplayer-current-time');
+
+// Встановити збережений час відтворення
+if (currentTime) {
+  player.setCurrentTime(currentTime);
 }
 
-player.on('timeupdate', throttle(onPlayer, 1000));
