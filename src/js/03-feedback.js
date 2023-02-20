@@ -6,38 +6,89 @@ const messageInput = form.querySelector('textarea[name="message"]');
 
 const LOCALSTORAGE_KEY = 'feedback-form-state';
 
-// функцію, яка буде зберігати стан форми в локальному сховищі
-const saveStateToLocalStorage = throttle(() => {
+form.addEventListener('input',  throttle(() => {
   const state = {
     email: emailInput.value,
     message: messageInput.value
   };
   localStorage.setItem(LOCALSTORAGE_KEY, JSON.stringify(state));
-}, 500);
+}, 500));
 
-// функцію, яка буде відновлювати стан форми з локального сховища
-const restoreStateFromLocalStorage = () => {
-  const stateJSON = localStorage.getItem(LOCALSTORAGE_KEY);
-  if (stateJSON) {
-    const state = JSON.parse(stateJSON);
-    emailInput.value = state.email;
-    messageInput.value = state.message;
+window.addEventListener('load', () => {
+  const state = JSON.parse(localStorage.getItem(LOCALSTORAGE_KEY));
+  if (state) {
+    emailInput.value = state.email || '';
+    messageInput.value = state.message || '';
   }
-};
-
-restoreStateFromLocalStorage();
-
-emailInput.addEventListener('input', saveStateToLocalStorage);
-messageInput.addEventListener('input', saveStateToLocalStorage);
+});
 
 form.addEventListener('submit', (event) => {
   event.preventDefault();
   const state = {
-    email: '',
-    message: ''
+    email: emailInput.value,
+    message: messageInput.value
   };
-  localStorage.setItem(LOCALSTORAGE_KEY, JSON.stringify(state));
+  localStorage.removeItem(LOCALSTORAGE_KEY);
+  console.log(state);
   emailInput.value = '';
   messageInput.value = '';
-  console.log(state);
 });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// // функція, яка буде зберігати стан форми в локальному сховищі
+// const saveStateToLocalStorage = throttle(() => {
+//   const state = {
+//     email: emailInput.value,
+//     message: messageInput.value
+//   };
+//   localStorage.setItem(LOCALSTORAGE_KEY, JSON.stringify(state));
+// }, 500);
+
+// // функція, яка буде відновлювати стан форми з локального сховища
+// const restoreStateFromLocalStorage = () => {
+//   const stateJSON = localStorage.getItem(LOCALSTORAGE_KEY);
+//   if (stateJSON) {
+//     const state = JSON.parse(stateJSON);
+//     emailInput.value = state.email;
+//     messageInput.value = state.message;
+//   }
+// };
+
+// restoreStateFromLocalStorage();
+
+// emailInput.addEventListener('input', saveStateToLocalStorage);
+// messageInput.addEventListener('input', saveStateToLocalStorage);
+
+// form.addEventListener('submit', (event) => {
+//   event.preventDefault();
+//   const state = {
+//     email: '',
+//     message: ''
+//   };
+//   localStorage.setItem(LOCALSTORAGE_KEY, JSON.stringify(state));
+//   emailInput.value = '';
+//   messageInput.value = '';
+//   console.log(state);
+// });
