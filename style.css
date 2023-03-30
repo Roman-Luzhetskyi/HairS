@@ -1,0 +1,153 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+nav{
+background: rgba(0, 0, 0, 0.6);
+}
+
+.navbar-nav a{
+           margin: 12px;
+           color: white;
+}
+.navbar-nav a:hover{
+    color: red;
+}
+
+.carousel-inner img {
+    width: 100%;
+    height: 650px;
+  }
+
+.carousel-caption h2{
+    font-size: 60px;
+    font-weight: bold;
+
+}
+.carousel-caption p{
+    font-size: 30px;
+    color: #f539aa;
+}
+.carousel-caption button{
+    color: white;
+    padding: 10px;
+   background-color: transparent;
+   border: 1px solid white;
+    width: 250px;
+}
+.carousel-caption button:hover{
+    background-color: #f539aa;
+}
+
+.line{
+    display:inline-block;
+    height: 3px;
+    width: 100px;
+    background-color: #f539aa;
+    text-align: center;
+    
+}
+
+.team-card{
+    padding: 10px;
+}
+.team-card img{
+    width:100% ;
+    transition: all 2s;
+    margin-bottom: 10px;
+    filter: grayscale(0.6);
+}
+.team-card img:hover{
+    transform: scale(1.1);
+    filter: none;
+}
+.col-md-6 table{
+    width: 100%;
+    border: 1px solid black;
+    text-align: center;
+    height: 370px;
+}
+.col-md-6 table th{
+    background-color: rgb(90, 89, 89);
+    height: 50px;
+    color: white;
+}
+.col-md-6 table th,td,tr{
+    border: 1px solid black;
+}
+.col-md-6 table tr:hover{
+    background-color: #ccc4c9;
+}
+.service img{
+    transition: all 2s;
+}
+.service img:hover{
+    transform: scale(1.1)
+}
+.contact{
+    text-align: center;
+}
+
+.contact i{
+    height: 50px;
+    width: 50px;
+    background-color: #f539aa;
+    font-size: 30px;
+    padding: 10px;
+    border-radius: 100%;
+}
+.overlay{
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    transition:all  .8s;
+    position: relative;
+}
+.inner-over{
+    position: absolute;
+    left: -100%;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.6);
+    height: 100%;
+    width: 100%;
+    transition:all  .8s;
+}
+.overlay:hover .inner-over{
+    left: 0;
+    transition:all  .8s;
+}
+
+.nav-toggler{
+    margin-right: 6rem;
+    color: #fff;
+    background-color: #fff;
+    
+}
+
+@media(max-width:768px){
+
+}
+
+@media(max-width:992px){
+    
+}
+
+@media(max-width:1200px){
+    
+}
+
+.map-container{
+  overflow:hidden;
+  padding-bottom:56.25%;
+  position:relative;
+  height:0;
+}
+.map-container iframe{
+  left:0;
+  top:0;
+  height:100%;
+  width:100%;
+  position:absolute;
+}
